@@ -17,6 +17,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Audio Control Button & Background Audio -->
+    <div class="audio-control-wrapper">
+        <button class="audio-btn" id="audio-btn" aria-label="Toggle Background Music">
+            <span class="music-icon" id="music-icon">🎵</span>
+            <span class="audio-label" id="audio-label">Music On</span>
+            <div class="sound-wave" id="sound-wave">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </div>
+        </button>
+    </div>
+    
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=flute-festive-indian-background-11234.mp3" type="audio/mpeg">
+        <source src="https://actions.google.com/sounds/v1/ambiences/warm_light_strings.ogg" type="audio/ogg">
+    </audio>
+
     <!-- Background sparkles ambient container -->
     <div class="bg-lighting">
         <div class="glow-orb orb-1"></div>

@@ -33,6 +33,79 @@
     --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Audio Control Toggle */
+.audio-control-wrapper {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+}
+
+.audio-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(45, 9, 24, 0.75);
+    border: 1px solid var(--glass-border);
+    padding: 0.55rem 1.1rem;
+    border-radius: 30px;
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.audio-btn:hover {
+    background: rgba(92, 15, 43, 0.85);
+    border-color: var(--gold-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--gold-glow);
+}
+
+.music-icon {
+    font-size: 1rem;
+}
+
+/* Animated Sound Wave Equalizer */
+.sound-wave {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 14px;
+}
+
+.sound-wave .bar {
+    width: 3px;
+    height: 100%;
+    background: var(--gold-primary);
+    border-radius: 3px;
+    animation: soundWave 1.2s ease-in-out infinite alternate;
+}
+
+.sound-wave .bar-1 { animation-delay: 0.1s; }
+.sound-wave .bar-2 { animation-delay: 0.3s; }
+.sound-wave .bar-3 { animation-delay: 0.5s; }
+
+.audio-btn.muted .sound-wave .bar {
+    animation: none;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.audio-btn.muted {
+    opacity: 0.7;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes soundWave {
+    0% { height: 3px; }
+    100% { height: 14px; }
+}
+
 /* Reset & Base Styles */
 * {
     margin: 0;

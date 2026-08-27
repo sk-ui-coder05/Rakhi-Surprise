@@ -10,7 +10,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyBtn = document.getElementById('copy-btn');
     const copyText = document.getElementById('copy-text');
     const replayBtn = document.getElementById('replay-btn');
-    const targetUrl = document.getElementById('target-url');
+    // Audio Elements & Controls
+    const bgMusic = document.getElementById('bg-music');
+    const audioBtn = document.getElementById('audio-btn');
+    const audioLabel = document.getElementById('audio-label');
+    const musicIcon = document.getElementById('music-icon');
+
+    let audioPlaying = false;
+    bgMusic.volume = 0.45;
+
+    // Attempt autoplay immediately
+    attemptAutoplay();
+
+    // Browser Autoplay Handler
+    function attemptAutoplay() {
+        const playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                audioPlaying = true;
+                updateAudioUI(true);
+            }).catch(error => {
+                console.log('Browser blocked unmuted autoplay. Waiting for user interaction.');
+                audioPlaying = false;
+                updateAudioUI(false);
+                
+                // Play audio on first user gesture anywhere
+                const enableAudioOnUserGesture = () => {
+                    if (!audioPlaying) {
+                        bgMusic.play().then(() => {
+                            audioPlaying = true;
+                            updateAudioUI(true);
+                        }).catch(() => {});
+                    }
+                    window.removeEventListener('click', enableAudioOnUserGesture);
+                    window.removeEventListener('keydown', enableAudioOnUserGesture);
+                    window.removeEventListener('touchstart', enableAudioOnUserGesture);
+                };
+
+                window.addEventListener('click', enableAudioOnUserGesture);
+                window.addEventListener('keydown', enableAudioOnUserGesture);
+                window.addEventListener('touchstart', enableAudioOnUserGesture);
+            });
+        }
+    }
+
+    // Audio Toggle Button Click
+    audioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (bgMusic.paused) {
+            bgMusic.play();
+            audioPlaying = true;
+            updateAudioUI(true);
+        } else {
+            bgMusic.pause();
+            audioPlaying = false;
+            updateAudioUI(false);
+        }
+    });
+
+    function updateAudioUI(isPlaying) {
+        if (isPlaying) {
+            audioBtn.classList.remove('muted');
+            audioLabel.textContent = 'Music On';
+            musicIcon.textContent = '🎵';
+        } else {
+            audioBtn.classList.add('muted');
+            audioLabel.textContent = 'Music Off';
+            musicIcon.textContent = '🔇';
+        }
+    }
+
+    // Web Audio API Festive Unboxing Sound Chime
+    function playUnboxingChime() {
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+
+            const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+            notes.forEach((freq, idx) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+
+                gain.gain.setValueAtTime(0.2, ctx.currentTime + idx * 0.08);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.08 + 0.6);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start(ctx.currentTime + idx * 0.08);
+                osc.stop(ctx.currentTime + idx * 0.08 + 0.6);
+            });
+        } catch (e) {
+            console.log('Web Audio Chime error:', e);
+        }
+    }
 
     let isOpened = false;
 
@@ -35,6 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function openSurprise() {
         if (isOpened) return;
         isOpened = true;
+
+        // Ensure background music is playing
+        if (bgMusic.paused) {
+            bgMusic.play().then(() => {
+                audioPlaying = true;
+                updateAudioUI(true);
+            }).catch(() => {});
+        }
+
+        // Play festive magical chime SFX
+        playUnboxingChime();
 
         // Hide hint
         ctaHint.classList.add('hidden');

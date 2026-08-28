@@ -9,6 +9,9 @@
     --card-bg: linear-gradient(150deg, rgba(255, 252, 247, 0.95) 0%, rgba(253, 245, 235, 0.92) 100%);
     --card-border: rgba(228, 202, 172, 0.65);
     
+    /* Theme Maroon Title */
+    --maroon-title: #7d0a1c;
+
     /* Theme Teal (Didi) */
     --teal-dark: #0b4e61;
     --teal-main: #0e6884;
@@ -363,7 +366,7 @@ html, body {
     font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: 8px;
-    color: var(--teal-dark);
+    color: var(--maroon-title);
     margin-left: 8px;
     text-transform: uppercase;
 }
@@ -371,7 +374,7 @@ html, body {
 .script-raksha {
     font-family: var(--font-script);
     font-size: clamp(4.2rem, 7vw, 5.2rem);
-    color: var(--teal-dark);
+    color: var(--maroon-title);
     line-height: 0.95;
     margin: -0.2rem 0;
     font-weight: 400;
@@ -382,7 +385,7 @@ html, body {
     font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: 8px;
-    color: var(--teal-dark);
+    color: var(--maroon-title);
     margin-left: 8px;
     text-transform: uppercase;
 }

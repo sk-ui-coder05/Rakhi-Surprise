@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Happy Raksha Bandhan - Duo Gift Boxes (Didi & Shruti)
+   Happy Raksha Bandhan - Exact Match to Design Screenshot with 4 Photos
    ========================================================================== */
 
 :root {
@@ -113,6 +113,107 @@ html, body {
     z-index: 1;
 }
 
+/* ==========================================================================
+   Three Floating Background Memory Photos (with natural floating & hover lift)
+   ========================================================================== */
+
+.floating-photo-item {
+    position: fixed;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 
+        0 16px 36px rgba(0, 0, 0, 0.16),
+        0 4px 12px rgba(0, 0, 0, 0.06);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    background: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.floating-photo-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.floating-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.floating-photo-item:hover .floating-img {
+    transform: scale(1.06);
+}
+
+/* 1. Top Left Photo (DSC03546 1.png) */
+.float-top-left {
+    top: 3.5%;
+    left: 2.5%;
+    width: 165px;
+    height: 215px;
+    animation: floatPhotoTL 5.5s ease-in-out infinite alternate;
+}
+
+.float-top-left:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+}
+
+@keyframes floatPhotoTL {
+    0% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-10px) rotate(-2.5deg); }
+    100% { transform: translateY(0) rotate(-4deg); }
+}
+
+/* 2. Top Right Photo (IMG_20200925_000526 1.png) */
+.float-top-right {
+    top: 12%;
+    right: 6.5%;
+    width: 200px;
+    height: 155px;
+    animation: floatPhotoTR 6s ease-in-out infinite alternate;
+    animation-delay: -2s;
+}
+
+.float-top-right:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+}
+
+@keyframes floatPhotoTR {
+    0% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-12px) rotate(-4deg); }
+    100% { transform: translateY(0) rotate(-6deg); }
+}
+
+/* 3. Bottom Right Photo (DSC02676 1.png) */
+.float-bottom-right {
+    bottom: 5%;
+    right: 4.5%;
+    width: 165px;
+    height: 215px;
+    animation: floatPhotoBR 5.8s ease-in-out infinite alternate;
+    animation-delay: -3.5s;
+}
+
+.float-bottom-right:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+}
+
+@keyframes floatPhotoBR {
+    0% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-11px) rotate(3.5deg); }
+    100% { transform: translateY(0) rotate(5deg); }
+}
+
 /* Top Right Audio Button */
 .audio-control-wrapper {
     position: fixed;
@@ -159,7 +260,7 @@ html, body {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1140px;
+    max-width: 1100px;
     padding: 2.5rem 1.5rem;
     display: flex;
     justify-content: center;
@@ -177,36 +278,36 @@ html, body {
         0 4px 16px rgba(0, 0, 0, 0.03);
     padding: 3.5rem 3.5rem;
     display: grid;
-    grid-template-columns: 1fr 1.25fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 3.5rem;
     align-items: center;
     position: relative;
     border: 1px solid rgba(235, 228, 218, 0.8);
 }
 
-/* Left Column: Illustration */
+/* Left Column: Main Festive Photo (DSC03619 1.png) */
 .card-left-column {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.illustration-wrapper {
+.main-photo-frame {
     width: 100%;
     max-width: 380px;
-    aspect-ratio: 1 / 1;
+    height: 430px;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-    background: #ffeef4;
-    transition: transform 0.3s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    background: #fdfbf7;
+    transition: transform 0.4s ease;
 }
 
-.illustration-wrapper:hover {
+.main-photo-frame:hover {
     transform: scale(1.02);
 }
 
-.rakhi-illustration-img {
+.main-celebration-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -355,7 +456,7 @@ html, body {
 
 .box-shruti {
     animation: floatGift 3.8s ease-in-out infinite alternate;
-    animation-delay: -1.8s; /* Alternates floating motion */
+    animation-delay: -1.8s;
 }
 
 .gift-box-wrapper:hover {
@@ -385,10 +486,6 @@ html, body {
     width: 100%;
     height: 92px;
     border-radius: 12px;
-    box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.25),
-        inset 0 -5px 15px rgba(0, 0, 0, 0.4),
-        0 12px 25px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
@@ -861,15 +958,38 @@ html, body {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
+    .float-top-left {
+        width: 140px;
+        height: 180px;
+        left: 1.5%;
+    }
+    .float-top-right {
+        width: 165px;
+        height: 125px;
+        right: 2%;
+    }
+    .float-bottom-right {
+        width: 140px;
+        height: 180px;
+        right: 1.5%;
+    }
+}
+
+@media (max-width: 980px) {
+    .floating-photo-item {
+        display: none; /* Hide floating corner cards on tablet/mobile to keep central card clean */
+    }
+
     .rakhi-main-card {
         grid-template-columns: 1fr;
         padding: 2.5rem 1.5rem;
         gap: 2.5rem;
     }
 
-    .illustration-wrapper {
+    .main-photo-frame {
         max-width: 320px;
+        height: 360px;
     }
 
     .script-raksha {

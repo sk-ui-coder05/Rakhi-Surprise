@@ -195,10 +195,19 @@
                             <circle cx="102" cy="89" r="2"/>
                         </g>
 
-                        <!-- Center Golden Shimmering Dome -->
-                        <circle cx="120" cy="120" r="26" fill="url(#centerDome)" stroke="#F8DF72" stroke-width="1.5"/>
-                        <!-- Highlight Glint -->
-                        <ellipse cx="114" cy="112" rx="7" ry="4" fill="#FFFFFF" opacity="0.65" transform="rotate(-30 114 112)"/>
+                        <!-- Sibling Photo Embedded Inside the Center Rakhi Medallion -->
+                        <clipPath id="rakhiPhotoClip">
+                            <circle cx="120" cy="120" r="35"/>
+                        </clipPath>
+
+                        <!-- Golden Bezel Ring -->
+                        <circle cx="120" cy="120" r="37" fill="#F8DF72" stroke="#C57E00" stroke-width="2"/>
+                        
+                        <!-- Photo -->
+                        <image href="memory_photo.jpg" x="70" y="70" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#rakhiPhotoClip)"/>
+                        
+                        <!-- Outer Golden Accent Rim over Photo -->
+                        <circle cx="120" cy="120" r="35" fill="none" stroke="url(#facetGold)" stroke-width="2.5" opacity="0.95"/>
                     </svg>
                 </div>
             </div>
@@ -260,24 +269,12 @@
                 <button class="card-close-x" id="close-card-btn" aria-label="Close card">&times;</button>
                 <div class="card-border-light"></div>
 
-                <!-- Cherished Memory Sibling Photo with Card Border Design -->
-                <div class="photo-frame-wrapper">
-                    <div class="photo-frame">
-                        <div class="frame-corner corner-tl"></div>
-                        <div class="frame-corner corner-tr"></div>
-                        <div class="frame-corner corner-bl"></div>
-                        <div class="frame-corner corner-br"></div>
-                        <div class="photo-inner">
-                            <img src="memory_photo.jpg" alt="Cherished Raksha Bandhan Memory" class="sibling-photo">
-                        </div>
-                        <div class="photo-caption">
-                            <span>Forever Bonded 💕</span>
-                        </div>
-                    </div>
+                <div class="card-rakhi-badge">
+                    <span class="gift-emoji">🎁</span>
                 </div>
 
-                <h2 class="card-headline">Happy Raksha Bandhan! ✨</h2>
-                <p class="card-submessage">To the best siblings in the world — celebrating our special bond, love, and memories.</p>
+                <h2 class="card-headline">Surprise Revealed! 🎉</h2>
+                <p class="card-submessage">Wishing you endless happiness, laughter, and cherished moments on this Raksha Bandhan.</p>
 
                 <!-- Featured URL Card -->
                 <div class="url-destination-box">

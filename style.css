@@ -684,98 +684,18 @@ html, body {
     pointer-events: none;
 }
 
-/* Sibling Photo Frame Border Design */
-.photo-frame-wrapper {
-    margin: 0.5rem auto 1.2rem auto;
-    width: 100%;
-    max-width: 380px;
-}
-
-.photo-frame {
-    position: relative;
-    background: #ffffff;
-    padding: 10px 10px 14px 10px;
-    border-radius: 16px;
-    border: 2px solid var(--gold-primary);
-    box-shadow: 
-        0 12px 30px rgba(11, 78, 97, 0.16),
-        0 2px 8px rgba(242, 183, 5, 0.25),
-        inset 0 0 0 4px #ffffff;
-    transition: transform 0.3s ease;
-}
-
-.photo-frame:hover {
-    transform: translateY(-3px) scale(1.01);
-}
-
-/* Ornate Frame Corners */
-.frame-corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-color: var(--crimson-main);
-    border-style: solid;
-    pointer-events: none;
-}
-
-.corner-tl {
-    top: 5px;
-    left: 5px;
-    border-width: 2px 0 0 2px;
-    border-top-left-radius: 6px;
-}
-
-.corner-tr {
-    top: 5px;
-    right: 5px;
-    border-width: 2px 2px 0 0;
-    border-top-right-radius: 6px;
-}
-
-.corner-bl {
-    bottom: 5px;
-    left: 5px;
-    border-width: 0 0 2px 2px;
-    border-bottom-left-radius: 6px;
-}
-
-.corner-br {
-    bottom: 5px;
-    right: 5px;
-    border-width: 0 2px 2px 0;
-    border-bottom-right-radius: 6px;
-}
-
-.photo-inner {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(14, 104, 132, 0.15);
-    background: #f0ebe4;
-}
-
-.sibling-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.photo-frame:hover .sibling-photo {
-    transform: scale(1.04);
-}
-
-.photo-caption {
-    margin-top: 8px;
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--teal-dark);
-    letter-spacing: 0.5px;
+.card-rakhi-badge {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.2rem auto;
+    background: var(--teal-bg);
+    border: 2px solid var(--teal-main);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(14, 104, 132, 0.15);
 }
 
 .card-headline {

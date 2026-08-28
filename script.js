@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements - Didi
     const giftBoxDidi = document.getElementById('gift-box-didi');
     const modalDidi = document.getElementById('modal-didi');
-    const copyBtnDidi = document.getElementById('copy-btn-didi');
-    const copyTextDidi = document.getElementById('copy-text-didi');
-    const targetUrlDidi = document.getElementById('target-url-didi');
 
     // DOM Elements - Shruti
     const giftBoxShruti = document.getElementById('gift-box-shruti');
@@ -186,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Copy Handlers
     function setupCopy(button, textSpan, textToCopy, defaultText) {
+        if (!button || !textSpan) return;
         button.addEventListener('click', () => {
             navigator.clipboard.writeText(textToCopy).then(() => {
                 button.classList.add('copied');
@@ -214,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    setupCopy(copyBtnDidi, copyTextDidi, targetUrlDidi.textContent.trim(), 'Copy Link');
     setupCopy(copyBtnShruti, copyTextShruti, targetUrlShruti.textContent.trim(), 'Copy Voucher Link');
 
     // Confetti Fireworks Implementation

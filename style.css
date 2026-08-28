@@ -353,41 +353,29 @@ html, body {
     text-align: center;
 }
 
-/* Typographic Lockup */
-.raksha-title-wrap {
+/* Custom Raksha Bandhan Title Graphic */
+.raksha-custom-title-wrap {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 0.6rem auto;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 0.6rem;
 }
 
-.sub-happy {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 8px;
-    color: var(--maroon-title);
-    margin-left: 8px;
-    text-transform: uppercase;
+.rakhi-custom-title-img {
+    width: 100%;
+    height: auto;
+    max-height: 155px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    display: block;
+    filter: contrast(1.05);
+    transition: transform 0.3s ease;
 }
 
-.script-raksha {
-    font-family: var(--font-script);
-    font-size: clamp(4.2rem, 7vw, 5.2rem);
-    color: var(--maroon-title);
-    line-height: 0.95;
-    margin: -0.2rem 0;
-    font-weight: 400;
-}
-
-.sub-bandhan {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 8px;
-    color: var(--maroon-title);
-    margin-left: 8px;
-    text-transform: uppercase;
+.rakhi-custom-title-img:hover {
+    transform: scale(1.02);
 }
 
 /* Gift Callout */

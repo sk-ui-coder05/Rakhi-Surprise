@@ -834,6 +834,12 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
+.box-didi-theme .url-badge-label {
+    font-size: 0.88rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 1.1rem;
+}
+
 .amazon-label {
     color: #d37400;
 }

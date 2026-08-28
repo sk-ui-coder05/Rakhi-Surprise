@@ -6,7 +6,8 @@
     /* Warm Festive Color Palette (Matching Haldi & Celebration Tones) */
     --bg-page: #faede0;
     --bg-page-gradient: radial-gradient(ellipse at 50% 30%, #fff8f0 0%, #faede1 50%, #f3decb 100%);
-    --card-bg: #ffffff;
+    --card-bg: linear-gradient(150deg, rgba(255, 252, 247, 0.95) 0%, rgba(253, 245, 235, 0.92) 100%);
+    --card-border: rgba(228, 202, 172, 0.65);
     
     /* Theme Teal (Didi) */
     --teal-dark: #0b4e61;
@@ -294,21 +295,22 @@ html, body {
     min-height: 100vh;
 }
 
-/* Central Main Banner Card */
+/* Central Main Banner Card (Subtle warm ivory card) */
 .rakhi-main-card {
     width: 100%;
     background: var(--card-bg);
+    backdrop-filter: blur(16px);
     border-radius: 32px;
     box-shadow: 
-        0 25px 65px rgba(190, 175, 160, 0.22),
-        0 4px 16px rgba(0, 0, 0, 0.03);
+        0 20px 50px rgba(175, 125, 85, 0.12),
+        0 3px 12px rgba(0, 0, 0, 0.02);
     padding: 3.5rem 3.5rem;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 3.5rem;
     align-items: center;
     position: relative;
-    border: 1px solid rgba(235, 228, 218, 0.8);
+    border: 1px solid var(--card-border);
 }
 
 /* Left Column: Main Festive Photo (DSC03619 1.png) */
@@ -701,7 +703,7 @@ html, body {
 
 .surprise-card {
     position: relative;
-    background: #ffffff;
+    background: linear-gradient(155deg, rgba(255, 253, 249, 0.98) 0%, rgba(253, 246, 237, 0.95) 100%);
     border-radius: 24px;
     padding: 2.5rem 2.2rem;
     max-width: 520px;
@@ -710,11 +712,11 @@ html, body {
     width: 90%;
     text-align: center;
     box-shadow: 
-        0 25px 60px rgba(11, 78, 97, 0.22),
-        0 5px 20px rgba(0, 0, 0, 0.08);
+        0 25px 60px rgba(11, 78, 97, 0.18),
+        0 5px 20px rgba(0, 0, 0, 0.06);
     transform: scale(0.7) translateY(40px);
     transition: transform 0.6s var(--ease-out-back);
-    border: 1px solid rgba(242, 183, 5, 0.4);
+    border: 1px solid var(--card-border);
 }
 
 .surprise-card-container.active .surprise-card {

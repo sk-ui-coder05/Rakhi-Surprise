@@ -1,16 +1,21 @@
 /**
- * Happy Raksha Bandhan Surprise Gift Landing Page Logic
+ * Happy Raksha Bandhan Surprise Gifts Logic (Didi & Shruti)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const giftBoxWrapper = document.getElementById('gift-box-wrapper');
-    const surpriseCardContainer = document.getElementById('surprise-card-container');
-    const copyBtn = document.getElementById('copy-btn');
-    const copyText = document.getElementById('copy-text');
-    const replayBtn = document.getElementById('replay-btn');
-    const closeCardBtn = document.getElementById('close-card-btn');
-    const targetUrl = document.getElementById('target-url');
+    // DOM Elements - Didi
+    const giftBoxDidi = document.getElementById('gift-box-didi');
+    const modalDidi = document.getElementById('modal-didi');
+    const copyBtnDidi = document.getElementById('copy-btn-didi');
+    const copyTextDidi = document.getElementById('copy-text-didi');
+    const targetUrlDidi = document.getElementById('target-url-didi');
+
+    // DOM Elements - Shruti
+    const giftBoxShruti = document.getElementById('gift-box-shruti');
+    const modalShruti = document.getElementById('modal-shruti');
+    const copyBtnShruti = document.getElementById('copy-btn-shruti');
+    const copyTextShruti = document.getElementById('copy-text-shruti');
+    const targetUrlShruti = document.getElementById('target-url-shruti');
 
     // Audio Elements & Controls
     const bgMusic = document.getElementById('bg-music');
@@ -109,27 +114,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    let isOpened = false;
-
-    // Initialize background sparkle particle system
-    initSparkleCanvas();
-
-    // Gift Box Click Event
-    giftBoxWrapper.addEventListener('click', openSurprise);
-
-    // Keyboard support for accessibility
-    giftBoxWrapper.addEventListener('keydown', (e) => {
+    // Open Didi's Gift
+    giftBoxDidi.addEventListener('click', () => openGift('didi'));
+    giftBoxDidi.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openSurprise();
+            openGift('didi');
         }
     });
 
-    // Open Surprise Function
-    function openSurprise() {
-        if (isOpened) return;
-        isOpened = true;
+    // Open Shruti's Gift
+    giftBoxShruti.addEventListener('click', () => openGift('shruti'));
+    giftBoxShruti.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openGift('shruti');
+        }
+    });
 
+    function openGift(recipient) {
         // Ensure background music is playing
         if (bgMusic.paused) {
             bgMusic.play().then(() => {
@@ -138,91 +141,93 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch(() => {});
         }
 
-        // Play festive magical chime SFX
+        // Play unboxing SFX
         playUnboxingChime();
 
-        // Animate gift box opening
-        giftBoxWrapper.classList.add('opened');
-
-        // Trigger explosive confetti burst
-        triggerConfetti();
-
-        // Reveal card modal after lid opens
-        setTimeout(() => {
-            surpriseCardContainer.classList.add('active');
-            
-            // Secondary celebratory burst around the card
+        if (recipient === 'didi') {
+            giftBoxDidi.classList.add('opened');
+            triggerConfetti(['#0b5e78', '#f5b318', '#ffd966', '#137796']);
             setTimeout(() => {
-                triggerSecondaryConfetti();
-            }, 350);
-        }, 450);
-    }
-
-    // Close / Replay Function
-    function closeCardAndRewrap() {
-        surpriseCardContainer.classList.remove('active');
-
-        setTimeout(() => {
-            giftBoxWrapper.classList.remove('opened');
-            isOpened = false;
-        }, 400);
-    }
-
-    // Close buttons
-    if (replayBtn) replayBtn.addEventListener('click', closeCardAndRewrap);
-    if (closeCardBtn) closeCardBtn.addEventListener('click', closeCardAndRewrap);
-
-    // Close on clicking modal backdrop
-    surpriseCardContainer.addEventListener('click', (e) => {
-        if (e.target === surpriseCardContainer) {
-            closeCardAndRewrap();
+                modalDidi.classList.add('active');
+            }, 420);
+        } else {
+            giftBoxShruti.classList.add('opened');
+            triggerConfetti(['#b81424', '#ff9900', '#f5b318', '#ffd966']);
+            setTimeout(() => {
+                modalShruti.classList.add('active');
+            }, 420);
         }
-    });
+    }
 
-    // Copy URL to Clipboard
-    copyBtn.addEventListener('click', () => {
-        const textToCopy = targetUrl.textContent.trim();
-        
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            copyBtn.classList.add('copied');
-            copyText.textContent = 'Copied! ✨';
-
+    // Close Modals
+    document.querySelectorAll('.close-modal-btn, .replay-didi-btn, .replay-shruti-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            modalDidi.classList.remove('active');
+            modalShruti.classList.remove('active');
             setTimeout(() => {
-                copyBtn.classList.remove('copied');
-                copyText.textContent = 'Copy Link';
-            }, 2500);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-            // Fallback
-            const textArea = document.createElement('textarea');
-            textArea.value = textToCopy;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-
-            copyBtn.classList.add('copied');
-            copyText.textContent = 'Copied! ✨';
-            setTimeout(() => {
-                copyBtn.classList.remove('copied');
-                copyText.textContent = 'Copy Link';
-            }, 2500);
+                giftBoxDidi.classList.remove('opened');
+                giftBoxShruti.classList.remove('opened');
+            }, 350);
         });
     });
 
+    // Close on backdrop click
+    [modalDidi, modalShruti].forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    giftBoxDidi.classList.remove('opened');
+                    giftBoxShruti.classList.remove('opened');
+                }, 350);
+            }
+        });
+    });
+
+    // Copy Handlers
+    function setupCopy(button, textSpan, textToCopy, defaultText) {
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                button.classList.add('copied');
+                textSpan.textContent = 'Copied! ✨';
+
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    textSpan.textContent = defaultText;
+                }, 2500);
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                button.classList.add('copied');
+                textSpan.textContent = 'Copied! ✨';
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    textSpan.textContent = defaultText;
+                }, 2500);
+            });
+        });
+    }
+
+    setupCopy(copyBtnDidi, copyTextDidi, targetUrlDidi.textContent.trim(), 'Copy Link');
+    setupCopy(copyBtnShruti, copyTextShruti, targetUrlShruti.textContent.trim(), 'Copy Voucher Link');
+
     // Confetti Fireworks Implementation
-    function triggerConfetti() {
+    function triggerConfetti(colorPalette) {
         if (typeof confetti === 'function') {
-            // Main burst from center gift
             confetti({
                 particleCount: 110,
                 spread: 90,
                 origin: { y: 0.6 },
-                colors: ['#0b5e78', '#f5b318', '#c40d1e', '#ffd966', '#137796'],
+                colors: colorPalette || ['#0b5e78', '#f5b318', '#c40d1e', '#ffd966'],
                 scalar: 1.2
             });
 
-            // Golden stars explosion
             confetti({
                 particleCount: 35,
                 spread: 120,
@@ -234,27 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function triggerSecondaryConfetti() {
-        if (typeof confetti === 'function') {
-            // Side cannon bursts
-            confetti({
-                particleCount: 45,
-                angle: 60,
-                spread: 50,
-                origin: { x: 0.15, y: 0.65 },
-                colors: ['#0b5e78', '#f5b318', '#c40d1e']
-            });
-            confetti({
-                particleCount: 45,
-                angle: 120,
-                spread: 50,
-                origin: { x: 0.85, y: 0.65 },
-                colors: ['#0b5e78', '#f5b318', '#c40d1e']
-            });
-        }
-    }
+    // Ambient Sparkle Particle Background
+    initSparkleCanvas();
 
-    // Ambient Background Particle Dots (Subtle colorful floating specks matching screenshot)
     function initSparkleCanvas() {
         const canvas = document.getElementById('sparkle-canvas');
         if (!canvas) return;

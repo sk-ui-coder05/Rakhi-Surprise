@@ -256,8 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const particles = [];
-        const particleCount = 28;
-        const colors = ['#f5a623', '#4a90e2', '#e74c3c', '#27ae60', '#9b59b6'];
+        const particleCount = 30;
+        const colors = ['#f5b318', '#e8896a', '#d48b00', '#e05a47', '#ffbe76'];
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({

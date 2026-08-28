@@ -1,27 +1,28 @@
 /* ==========================================================================
-   Happy Raksha Bandhan - Light Theme (Matching Reference Image)
+   Happy Raksha Bandhan - Exact Match to Design Screenshot
    ========================================================================== */
 
 :root {
     /* Color Palette */
-    --bg-white: #ffffff;
-    --bg-warm-canvas: #faf8f5;
+    --bg-page: #fbf9f6;
+    --card-bg: #ffffff;
     
-    /* Theme Teal & Deep Cyan */
+    /* Theme Teal */
     --teal-dark: #0b4e61;
     --teal-main: #0e6884;
-    --teal-light: #168ba8;
     --teal-bg: #edf8fa;
     
-    /* Theme Gold */
-    --gold-primary: #f2b705;
-    --gold-secondary: #d48b00;
-    --gold-light: #fff5c0;
-    --gold-gradient: linear-gradient(135deg, #fff2aa 0%, #f2b705 45%, #d48b00 100%);
+    /* Theme Gold / Yellow for Gift Box */
+    --gift-gold-lid: #f5b318;
+    --gift-gold-ribbon: #f5b318;
+    --gift-gold-gradient: linear-gradient(135deg, #ffd966 0%, #f5b318 60%, #e09b0a 100%);
     
-    /* Theme Crimson / Ruby */
-    --crimson-main: #b81424;
-    --crimson-dark: #8c0d19;
+    /* Gift Body Teal */
+    --gift-teal-body: #0b5e78;
+    --gift-teal-dark: #074356;
+    
+    /* Theme Crimson */
+    --crimson-red: #c40d1e;
     
     /* Typography */
     --font-script: 'Great Vibes', cursive;
@@ -30,10 +31,9 @@
     
     /* Transitions */
     --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset & Base Setup */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -43,7 +43,7 @@
 html, body {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--bg-warm-canvas);
+    background-color: var(--bg-page);
     color: #333333;
     font-family: var(--font-body);
     overflow-x: hidden;
@@ -53,7 +53,7 @@ html, body {
     position: relative;
 }
 
-/* Artistic Watercolor & Mandala Background Layer */
+/* Background Wireframe Stars & Floating Ornaments */
 .bg-artistic-layer {
     position: fixed;
     top: 0;
@@ -65,71 +65,41 @@ html, body {
     overflow: hidden;
 }
 
-/* Soft Warm Watercolor Splatters (matching the image) */
-.watercolor-splash {
+.bg-star-wireframe {
     position: absolute;
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    filter: blur(40px);
-    opacity: 0.65;
-    pointer-events: none;
-}
-
-.splash-left {
-    top: 5%;
-    left: 8%;
-    width: 550px;
-    height: 550px;
-    background: radial-gradient(circle, rgba(232, 222, 207, 0.8) 0%, rgba(240, 233, 222, 0.4) 60%, rgba(255, 255, 255, 0) 80%);
-}
-
-.splash-center {
-    top: 25%;
-    left: 28%;
-    width: 450px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(235, 226, 212, 0.7) 0%, rgba(250, 245, 235, 0.2) 65%, rgba(255, 255, 255, 0) 80%);
-}
-
-/* Mandala Background Motifs */
-.mandala-art {
-    position: absolute;
-    color: #9d8c7c;
-    pointer-events: none;
-    animation: gentleMandalaFloat 20s ease-in-out infinite alternate;
-}
-
-.mandala-1 {
-    top: 8%;
-    left: 18%;
-    width: 160px;
-    height: 160px;
-    opacity: 0.55;
-}
-
-.mandala-2 {
-    bottom: 12%;
-    left: 5%;
-    width: 140px;
-    height: 140px;
     opacity: 0.45;
+    animation: gentleStarFloat 16s ease-in-out infinite alternate;
+}
+
+.star-top-left {
+    top: 6%;
+    left: 14%;
+    width: 110px;
+    height: 110px;
+}
+
+.star-bottom-left {
+    bottom: 8%;
+    left: 6%;
+    width: 130px;
+    height: 130px;
     animation-delay: -5s;
 }
 
-.mandala-3 {
-    top: 18%;
-    left: 35%;
-    width: 180px;
-    height: 180px;
-    opacity: 0.5;
+.star-top-right {
+    top: 8%;
+    right: 8%;
+    width: 90px;
+    height: 90px;
     animation-delay: -10s;
 }
 
-@keyframes gentleMandalaFloat {
+@keyframes gentleStarFloat {
     0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-10px) rotate(8deg); }
+    100% { transform: translateY(-8px) rotate(6deg); }
 }
 
-/* Canvas Sparkles */
+/* Sparkle Canvas for subtle colorful particles */
 #sparkle-canvas {
     position: fixed;
     top: 0;
@@ -140,78 +110,53 @@ html, body {
     z-index: 1;
 }
 
-/* Audio Control Badge */
+/* Top Right Audio Button (Exact matching pill style) */
 .audio-control-wrapper {
     position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 1.8rem;
+    right: 2.2rem;
     z-index: 100;
 }
 
 .audio-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     background: #ffffff;
-    border: 1px solid rgba(14, 104, 132, 0.2);
-    padding: 0.55rem 1.1rem;
-    border-radius: 30px;
+    border: 1px solid #e2ded8;
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
     color: var(--teal-dark);
     font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(11, 78, 97, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
 }
 
 .audio-btn:hover {
-    background: var(--teal-bg);
+    background: #faf7f2;
     border-color: var(--teal-main);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14, 104, 132, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(11, 78, 97, 0.1);
 }
 
-.sound-wave {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 14px;
+.music-icon {
+    font-size: 0.95rem;
 }
 
-.sound-wave .bar {
-    width: 3px;
-    height: 100%;
-    background: var(--teal-main);
-    border-radius: 3px;
-    animation: soundWave 1.2s ease-in-out infinite alternate;
+.audio-dots {
+    letter-spacing: 1px;
+    color: #999999;
 }
 
-.sound-wave .bar-1 { animation-delay: 0.1s; }
-.sound-wave .bar-2 { animation-delay: 0.3s; }
-.sound-wave .bar-3 { animation-delay: 0.5s; }
-
-.audio-btn.muted .sound-wave .bar {
-    animation: none;
-    height: 3px;
-    background: #cccccc;
-}
-
-.audio-btn.muted {
-    opacity: 0.75;
-}
-
-@keyframes soundWave {
-    0% { height: 3px; }
-    100% { height: 14px; }
-}
-
-/* Main Banner Layout Container */
-.landing-card-wrapper {
+/* Main Viewport Container */
+.main-viewport-container {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1020px;
     padding: 2rem 1.5rem;
     display: flex;
     justify-content: center;
@@ -219,192 +164,134 @@ html, body {
     min-height: 100vh;
 }
 
-.banner-layout {
+/* Central Main Banner Card (Exact match to screenshot) */
+.rakhi-main-card {
     width: 100%;
-    background: #ffffff;
-    border-radius: 28px;
+    background: var(--card-bg);
+    border-radius: 32px;
     box-shadow: 
-        0 20px 60px rgba(180, 165, 150, 0.2),
-        0 2px 10px rgba(0, 0, 0, 0.03);
-    padding: 3.5rem 3rem;
+        0 25px 60px rgba(190, 175, 160, 0.22),
+        0 4px 16px rgba(0, 0, 0, 0.03);
+    padding: 3.5rem 3.5rem;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
     align-items: center;
     position: relative;
+    border: 1px solid rgba(235, 228, 218, 0.8);
+}
+
+/* Left Column: Illustration */
+.card-left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration-wrapper {
+    width: 100%;
+    max-width: 370px;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(230, 220, 205, 0.6);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    background: #ffeef4;
+    transition: transform 0.3s ease;
 }
 
-/* Decorative diagonal background splash inside banner */
-.banner-layout::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: -80px;
-    width: 520px;
-    height: 520px;
-    background: radial-gradient(circle, rgba(238, 230, 218, 0.75) 0%, rgba(246, 240, 230, 0.35) 60%, transparent 75%);
-    pointer-events: none;
-    z-index: 0;
+.illustration-wrapper:hover {
+    transform: scale(1.02);
 }
 
-/* Left Rakhi Showcase */
-.rakhi-showcase {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 320px;
-    z-index: 1;
-}
-
-/* Diagonal Red/Gold Braided Thread Line */
-.rakhi-thread-line {
-    position: absolute;
-    top: -30%;
-    left: 85%;
-    width: 650px;
-    height: 5px;
-    transform: rotate(-45deg);
-    transform-origin: top left;
-    background: repeating-linear-gradient(
-        45deg,
-        var(--crimson-main) 0px,
-        var(--crimson-main) 6px,
-        var(--gold-primary) 6px,
-        var(--gold-primary) 12px
-    );
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Golden Beads on Thread */
-.rakhi-thread-line::before,
-.rakhi-thread-line::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    width: 14px;
-    height: 14px;
-    background: var(--gold-gradient);
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.rakhi-thread-line::before { left: 180px; }
-.rakhi-thread-line::after { right: 180px; }
-
-.rakhi-emblem-container {
-    position: relative;
-    z-index: 2;
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: gentleRakhiPulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes gentleRakhiPulse {
-    0% { transform: scale(1) rotate(0deg); }
-    100% { transform: scale(1.03) rotate(2deg); }
-}
-
-.theme-rakhi-svg {
+.rakhi-illustration-img {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 15px 30px rgba(11, 78, 97, 0.18));
+    object-fit: cover;
+    display: block;
 }
 
-/* Right Content Showcase */
-.content-showcase {
-    position: relative;
-    z-index: 1;
+/* Right Column: Content & Typography */
+.card-right-column {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* Typographic Lockup (Matching Reference Image) */
+/* Typographic Lockup */
 .raksha-title-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
 }
 
 .sub-happy {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: 9px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 8px;
     color: var(--teal-dark);
-    margin-left: 9px; /* Balances letter-spacing centering */
+    margin-left: 8px;
     text-transform: uppercase;
 }
 
 .script-raksha {
     font-family: var(--font-script);
-    font-size: clamp(4.5rem, 8vw, 6.8rem);
+    font-size: clamp(4.2rem, 7vw, 5.4rem);
     color: var(--teal-dark);
     line-height: 0.95;
     margin: -0.2rem 0;
     font-weight: 400;
-    filter: drop-shadow(0 2px 6px rgba(11, 78, 97, 0.1));
 }
 
 .sub-bandhan {
     font-family: var(--font-heading);
     font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: 9px;
+    font-weight: 700;
+    letter-spacing: 8px;
     color: var(--teal-dark);
-    margin-left: 9px; /* Balances letter-spacing */
+    margin-left: 8px;
     text-transform: uppercase;
 }
 
-/* Gift Invitation Text */
-.gift-invitation {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+/* Gift Callout */
+.gift-callout-section {
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
 }
 
 .gift-tagline {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--crimson-main);
-    letter-spacing: 1px;
-    margin-bottom: 0.3rem;
+    color: var(--crimson-red);
+    margin-bottom: 0.25rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .gift-subtext {
-    display: block;
-    font-size: 0.95rem;
-    color: #666666;
+    font-size: 0.92rem;
+    color: #444444;
     font-weight: 500;
 }
 
-/* 3D Gift Box CTA Area */
+/* 3D Gift Box (Teal Body with Golden Yellow Lid and Ribbon) */
 .gift-box-area {
     position: relative;
     perspective: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0 1rem 0;
 }
 
 .gift-box-wrapper {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 135px;
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.4s var(--ease-out-back);
@@ -421,7 +308,7 @@ html, body {
 
 @keyframes floatGift {
     0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-12px) rotate(2deg); }
+    100% { transform: translateY(-10px) rotate(1.5deg); }
 }
 
 .gift-box {
@@ -431,20 +318,19 @@ html, body {
     transform-style: preserve-3d;
 }
 
-/* Gift Box Body (Teal with Gold Ribbons) */
+/* Gift Box Body (Teal with Yellow Ribbon Cross) */
 .gift-body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 115px;
-    background: linear-gradient(145deg, #0e6884 0%, #083848 100%);
+    height: 105px;
+    background: linear-gradient(150deg, var(--gift-teal-body) 0%, var(--gift-teal-dark) 100%);
     border-radius: 12px;
     box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.25),
         inset 0 -5px 15px rgba(0, 0, 0, 0.4),
-        0 15px 35px rgba(11, 78, 97, 0.25);
+        0 15px 30px rgba(11, 78, 97, 0.22);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .body-ribbon-v {
@@ -452,10 +338,10 @@ html, body {
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    width: 30px;
+    width: 26px;
     height: 100%;
-    background: var(--gold-gradient);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    background: var(--gift-gold-gradient);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 }
 
 .body-ribbon-h {
@@ -464,9 +350,9 @@ html, body {
     left: 0;
     transform: translateY(-50%);
     width: 100%;
-    height: 30px;
-    background: var(--gold-gradient);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    height: 26px;
+    background: var(--gift-gold-gradient);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 }
 
 .inner-glow {
@@ -480,22 +366,21 @@ html, body {
     transition: opacity 0.5s ease;
 }
 
-/* Gift Box Lid */
+/* Gift Box Lid (Bright Yellow Gold) */
 .gift-lid {
     position: absolute;
     top: -4px;
-    left: -7px;
-    width: 164px;
-    height: 44px;
-    background: linear-gradient(145deg, #137796 0%, #0b4e61 100%);
+    left: -6px;
+    width: 152px;
+    height: 38px;
+    background: var(--gift-gold-gradient);
     border-radius: 10px;
     box-shadow: 
-        0 6px 18px rgba(0, 0, 0, 0.2),
-        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+        0 6px 16px rgba(0, 0, 0, 0.18),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5);
     z-index: 5;
     transform-origin: bottom right;
     transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease;
-    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .lid-ribbon-v {
@@ -503,40 +388,30 @@ html, body {
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    width: 32px;
+    width: 28px;
     height: 100%;
-    background: var(--gold-gradient);
+    background: linear-gradient(180deg, #ffeaa7 0%, #f5b318 100%);
 }
 
-.lid-ribbon-h {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 32px;
-    background: var(--gold-gradient);
-}
-
-/* Gift Bow */
+/* Gift Bow (Gold Ribbon) */
 .gift-bow {
     position: absolute;
-    top: -28px;
+    top: -24px;
     left: 50%;
     transform: translateX(-50%);
-    width: 74px;
-    height: 36px;
+    width: 66px;
+    height: 32px;
     pointer-events: none;
 }
 
 .bow-loop {
     position: absolute;
     top: 0;
-    width: 34px;
-    height: 25px;
-    background: var(--gold-gradient);
+    width: 30px;
+    height: 22px;
+    background: var(--gift-gold-gradient);
     border-radius: 50% 50% 10% 50%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .bow-left {
@@ -551,47 +426,47 @@ html, body {
 
 .bow-center {
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 18px;
-    height: 16px;
+    width: 16px;
+    height: 14px;
     background: #ffebad;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     z-index: 2;
 }
 
 .bow-tail {
     position: absolute;
-    top: 20px;
-    width: 12px;
-    height: 25px;
-    background: var(--gold-gradient);
+    top: 18px;
+    width: 10px;
+    height: 20px;
+    background: var(--gift-gold-gradient);
     clip-path: polygon(0 0, 100% 0, 80% 100%, 0 85%);
 }
 
 .tail-left {
-    left: 20px;
+    left: 18px;
     transform: rotate(20deg);
 }
 
 .tail-right {
-    right: 20px;
+    right: 18px;
     transform: scaleX(-1) rotate(20deg);
 }
 
 /* Box Shadow */
 .box-shadow {
     position: absolute;
-    bottom: -18px;
+    bottom: -16px;
     left: 10%;
     width: 80%;
-    height: 18px;
-    background: radial-gradient(ellipse at center, rgba(11, 78, 97, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+    height: 16px;
+    background: radial-gradient(ellipse at center, rgba(11, 78, 97, 0.28) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
-/* ANIMATION STATES FOR GIFT BOX */
+/* ANIMATION STATES */
 .gift-box-wrapper.opened .gift-lid {
     transform: translateY(-140px) rotate(-35deg) scale(0.9);
     opacity: 0;
@@ -601,14 +476,14 @@ html, body {
     opacity: 1;
 }
 
-/* REVEALED SURPRISE CARD MODAL */
+/* REVEALED SURPRISE MODAL CARD */
 .surprise-card-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(11, 78, 97, 0.4);
+    background: rgba(11, 78, 97, 0.35);
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
@@ -628,29 +503,18 @@ html, body {
     position: relative;
     background: #ffffff;
     border-radius: 24px;
-    padding: 2.2rem 2rem;
-    max-width: 520px;
+    padding: 2.5rem 2.2rem;
+    max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
     width: 90%;
     text-align: center;
     box-shadow: 
-        0 25px 60px rgba(11, 78, 97, 0.25),
+        0 25px 60px rgba(11, 78, 97, 0.22),
         0 5px 20px rgba(0, 0, 0, 0.08);
     transform: scale(0.7) translateY(40px);
     transition: transform 0.6s var(--ease-out-back);
     border: 1px solid rgba(242, 183, 5, 0.4);
-    scrollbar-width: thin;
-    scrollbar-color: var(--teal-main) transparent;
-}
-
-.surprise-card::-webkit-scrollbar {
-    width: 6px;
-}
-
-.surprise-card::-webkit-scrollbar-thumb {
-    background-color: var(--teal-main);
-    border-radius: 10px;
 }
 
 .surprise-card-container.active .surprise-card {
@@ -670,7 +534,7 @@ html, body {
 }
 
 .card-close-x:hover {
-    color: var(--crimson-main);
+    color: var(--crimson-red);
 }
 
 .card-border-light {
@@ -734,7 +598,7 @@ html, body {
 
 .url-display-text {
     font-family: var(--font-heading);
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    font-size: clamp(1.2rem, 3.5vw, 1.55rem);
     font-weight: 800;
     color: var(--teal-dark);
     letter-spacing: 1px;
@@ -813,42 +677,33 @@ html, body {
 
 /* Responsive Media Queries */
 @media (max-width: 860px) {
-    .banner-layout {
+    .rakhi-main-card {
         grid-template-columns: 1fr;
         padding: 2.5rem 1.5rem;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
-    .rakhi-thread-line {
-        display: none;
-    }
-
-    .rakhi-showcase {
-        min-height: auto;
-    }
-
-    .rakhi-emblem-container {
-        width: 190px;
-        height: 190px;
+    .illustration-wrapper {
+        max-width: 300px;
     }
 
     .script-raksha {
-        font-size: 4.8rem;
+        font-size: 4.2rem;
     }
 }
 
 @media (max-width: 500px) {
-    .landing-card-wrapper {
+    .main-viewport-container {
         padding: 1rem 0.8rem;
     }
 
-    .banner-layout {
-        padding: 2rem 1rem;
-        border-radius: 20px;
+    .rakhi-main-card {
+        padding: 2rem 1.2rem;
+        border-radius: 24px;
     }
 
     .script-raksha {
-        font-size: 3.8rem;
+        font-size: 3.6rem;
     }
 
     .action-buttons-group {

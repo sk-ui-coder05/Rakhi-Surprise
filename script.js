@@ -1,5 +1,5 @@
 /**
- * Happy Raksha Bandhan Surprise Gift Landing Page Logic (Light Theme)
+ * Happy Raksha Bandhan Surprise Gift Landing Page Logic
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,11 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateAudioUI(isPlaying) {
         if (isPlaying) {
-            audioBtn.classList.remove('muted');
             audioLabel.textContent = 'Music On';
             musicIcon.textContent = '🎵';
         } else {
-            audioBtn.classList.add('muted');
             audioLabel.textContent = 'Music Off';
             musicIcon.textContent = '🔇';
         }
@@ -212,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Confetti Fireworks Implementation (Matching Theme Colors: Teal, Ruby, Gold)
+    // Confetti Fireworks Implementation
     function triggerConfetti() {
         if (typeof confetti === 'function') {
             // Main burst from center gift
@@ -220,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 particleCount: 110,
                 spread: 90,
                 origin: { y: 0.6 },
-                colors: ['#0e6884', '#f2b705', '#b81424', '#d48b00', '#168ba8'],
+                colors: ['#0b5e78', '#f5b318', '#c40d1e', '#ffd966', '#137796'],
                 scalar: 1.2
             });
 
@@ -229,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 particleCount: 35,
                 spread: 120,
                 origin: { y: 0.58 },
-                colors: ['#fff5c0', '#f2b705', '#d48b00'],
+                colors: ['#fff5c0', '#f5b318', '#e09b0a'],
                 shapes: ['star'],
                 scalar: 1.4
             });
@@ -244,19 +242,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 angle: 60,
                 spread: 50,
                 origin: { x: 0.15, y: 0.65 },
-                colors: ['#0e6884', '#f2b705', '#b81424']
+                colors: ['#0b5e78', '#f5b318', '#c40d1e']
             });
             confetti({
                 particleCount: 45,
                 angle: 120,
                 spread: 50,
                 origin: { x: 0.85, y: 0.65 },
-                colors: ['#0e6884', '#f2b705', '#b81424']
+                colors: ['#0b5e78', '#f5b318', '#c40d1e']
             });
         }
     }
 
-    // Ambient Sparkle Background System (Light Warm Gold Glitter)
+    // Ambient Background Particle Dots (Subtle colorful floating specks matching screenshot)
     function initSparkleCanvas() {
         const canvas = document.getElementById('sparkle-canvas');
         if (!canvas) return;
@@ -271,18 +269,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const particles = [];
-        const particleCount = 35;
+        const particleCount = 28;
+        const colors = ['#f5a623', '#4a90e2', '#e74c3c', '#27ae60', '#9b59b6'];
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 2.2 + 0.8,
-                speedY: Math.random() * -0.4 - 0.1,
-                speedX: (Math.random() - 0.5) * 0.25,
-                opacity: Math.random() * 0.5 + 0.2,
+                size: Math.random() * 2 + 1.2,
+                speedY: Math.random() * -0.3 - 0.08,
+                speedX: (Math.random() - 0.5) * 0.2,
+                opacity: Math.random() * 0.4 + 0.2,
                 pulse: Math.random() * 0.02 + 0.005,
-                color: Math.random() > 0.4 ? '#d48b00' : '#0e6884'
+                color: colors[Math.floor(Math.random() * colors.length)]
             });
         }
 
@@ -292,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             particles.forEach(p => {
                 p.y += p.speedY;
                 p.x += p.speedX;
-                p.opacity += Math.sin(Date.now() * p.pulse) * 0.01;
+                p.opacity += Math.sin(Date.now() * p.pulse) * 0.008;
 
                 if (p.y < 0) {
                     p.y = height + 10;
@@ -303,9 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
-                ctx.globalAlpha = Math.max(0.1, Math.min(0.65, p.opacity));
-                ctx.shadowBlur = 6;
-                ctx.shadowColor = p.color;
+                ctx.globalAlpha = Math.max(0.15, Math.min(0.55, p.opacity));
                 ctx.fill();
                 ctx.restore();
             });

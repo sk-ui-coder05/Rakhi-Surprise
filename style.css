@@ -299,32 +299,34 @@ html, body {
 
 /* Recipient Badges */
 .gift-recipient-badge {
-    padding: 0.35rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 0.45rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.92rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.6rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    letter-spacing: 0.4px;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    position: relative;
 }
 
 .badge-didi {
-    background: var(--teal-bg);
-    border: 1.5px solid var(--teal-main);
+    background: #ffffff;
+    border: 2px solid var(--teal-main);
     color: var(--teal-dark);
 }
 
 .badge-shruti {
-    background: var(--ruby-bg);
-    border: 1.5px solid var(--ruby-main);
+    background: #ffffff;
+    border: 2px solid var(--ruby-main);
     color: var(--ruby-main);
 }
 
 .tap-hint-text {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: #888888;
-    margin-top: 0.4rem;
+    color: #777777;
+    margin-top: 0.8rem;
     letter-spacing: 0.5px;
 }
 
@@ -335,6 +337,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 0.5rem;
 }
 
 .gift-box-wrapper {

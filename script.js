@@ -1,15 +1,17 @@
 /**
- * Happy Rakshabandhan Surprise Gift Landing Page Logic
+ * Happy Raksha Bandhan Surprise Gift Landing Page Logic (Light Theme)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const giftBoxWrapper = document.getElementById('gift-box-wrapper');
-    const ctaHint = document.getElementById('cta-hint');
     const surpriseCardContainer = document.getElementById('surprise-card-container');
     const copyBtn = document.getElementById('copy-btn');
     const copyText = document.getElementById('copy-text');
     const replayBtn = document.getElementById('replay-btn');
+    const closeCardBtn = document.getElementById('close-card-btn');
+    const targetUrl = document.getElementById('target-url');
+
     // Audio Elements & Controls
     const bgMusic = document.getElementById('bg-music');
     const audioBtn = document.getElementById('audio-btn');
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicIcon = document.getElementById('music-icon');
 
     let audioPlaying = false;
-    bgMusic.volume = 0.45;
+    bgMusic.volume = 0.55;
 
     // Attempt autoplay immediately
     attemptAutoplay();
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
 
-                gain.gain.setValueAtTime(0.2, ctx.currentTime + idx * 0.08);
+                gain.gain.setValueAtTime(0.18, ctx.currentTime + idx * 0.08);
                 gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.08 + 0.6);
 
                 osc.connect(gain);
@@ -125,9 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Also clicking CTA hint triggers open
-    ctaHint.addEventListener('click', openSurprise);
-
     // Open Surprise Function
     function openSurprise() {
         if (isOpened) return;
@@ -144,35 +143,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Play festive magical chime SFX
         playUnboxingChime();
 
-        // Hide hint
-        ctaHint.classList.add('hidden');
-
         // Animate gift box opening
         giftBoxWrapper.classList.add('opened');
 
         // Trigger explosive confetti burst
         triggerConfetti();
 
-        // Reveal card after lid opens
+        // Reveal card modal after lid opens
         setTimeout(() => {
             surpriseCardContainer.classList.add('active');
             
             // Secondary celebratory burst around the card
             setTimeout(() => {
                 triggerSecondaryConfetti();
-            }, 400);
+            }, 350);
         }, 450);
     }
 
-    // Replay / Re-wrap Gift Box
-    replayBtn.addEventListener('click', () => {
+    // Close / Replay Function
+    function closeCardAndRewrap() {
         surpriseCardContainer.classList.remove('active');
 
         setTimeout(() => {
             giftBoxWrapper.classList.remove('opened');
-            ctaHint.classList.remove('hidden');
             isOpened = false;
         }, 400);
+    }
+
+    // Close buttons
+    if (replayBtn) replayBtn.addEventListener('click', closeCardAndRewrap);
+    if (closeCardBtn) closeCardBtn.addEventListener('click', closeCardAndRewrap);
+
+    // Close on clicking modal backdrop
+    surpriseCardContainer.addEventListener('click', (e) => {
+        if (e.target === surpriseCardContainer) {
+            closeCardAndRewrap();
+        }
     });
 
     // Copy URL to Clipboard
@@ -189,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2500);
         }).catch(err => {
             console.error('Failed to copy text: ', err);
-            // Fallback for older browsers
+            // Fallback
             const textArea = document.createElement('textarea');
             textArea.value = textToCopy;
             document.body.appendChild(textArea);
@@ -206,51 +212,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Confetti Fireworks Implementation
+    // Confetti Fireworks Implementation (Matching Theme Colors: Teal, Ruby, Gold)
     function triggerConfetti() {
         if (typeof confetti === 'function') {
             // Main burst from center gift
             confetti({
-                particleCount: 120,
+                particleCount: 110,
                 spread: 90,
                 origin: { y: 0.6 },
-                colors: ['#f7ca65', '#e69d27', '#9e1b38', '#ffffff', '#ff4d6d', '#ffd700'],
+                colors: ['#0e6884', '#f2b705', '#b81424', '#d48b00', '#168ba8'],
                 scalar: 1.2
             });
 
             // Golden stars explosion
             confetti({
-                particleCount: 40,
+                particleCount: 35,
                 spread: 120,
                 origin: { y: 0.58 },
-                colors: ['#ffe79a', '#ffd700', '#ffffff'],
+                colors: ['#fff5c0', '#f2b705', '#d48b00'],
                 shapes: ['star'],
-                scalar: 1.5
+                scalar: 1.4
             });
         }
     }
 
     function triggerSecondaryConfetti() {
         if (typeof confetti === 'function') {
-            // Side cannon bursts for rich feel
+            // Side cannon bursts
             confetti({
-                particleCount: 50,
+                particleCount: 45,
                 angle: 60,
-                spread: 55,
-                origin: { x: 0.1, y: 0.7 },
-                colors: ['#f7ca65', '#9e1b38', '#ffd700']
+                spread: 50,
+                origin: { x: 0.15, y: 0.65 },
+                colors: ['#0e6884', '#f2b705', '#b81424']
             });
             confetti({
-                particleCount: 50,
+                particleCount: 45,
                 angle: 120,
-                spread: 55,
-                origin: { x: 0.9, y: 0.7 },
-                colors: ['#f7ca65', '#9e1b38', '#ffd700']
+                spread: 50,
+                origin: { x: 0.85, y: 0.65 },
+                colors: ['#0e6884', '#f2b705', '#b81424']
             });
         }
     }
 
-    // Ambient Sparkle Background System
+    // Ambient Sparkle Background System (Light Warm Gold Glitter)
     function initSparkleCanvas() {
         const canvas = document.getElementById('sparkle-canvas');
         if (!canvas) return;
@@ -265,18 +271,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const particles = [];
-        const particleCount = 45;
+        const particleCount = 35;
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 2.5 + 0.5,
-                speedY: Math.random() * -0.5 - 0.1,
-                speedX: (Math.random() - 0.5) * 0.3,
-                opacity: Math.random() * 0.7 + 0.2,
+                size: Math.random() * 2.2 + 0.8,
+                speedY: Math.random() * -0.4 - 0.1,
+                speedX: (Math.random() - 0.5) * 0.25,
+                opacity: Math.random() * 0.5 + 0.2,
                 pulse: Math.random() * 0.02 + 0.005,
-                color: Math.random() > 0.3 ? '#f7ca65' : '#ffffff'
+                color: Math.random() > 0.4 ? '#d48b00' : '#0e6884'
             });
         }
 
@@ -297,8 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
-                ctx.globalAlpha = Math.max(0.1, Math.min(0.9, p.opacity));
-                ctx.shadowBlur = 10;
+                ctx.globalAlpha = Math.max(0.1, Math.min(0.65, p.opacity));
+                ctx.shadowBlur = 6;
                 ctx.shadowColor = p.color;
                 ctx.fill();
                 ctx.restore();
